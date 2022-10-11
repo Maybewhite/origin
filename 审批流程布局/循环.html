@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    let list = [
+        {
+            name: 'zs',
+            children: []
+        },
+        {
+            name: '董事会',
+            children: [
+                {
+                    name: '研发部',
+                    children: [
+                        {
+                            name: '研发1',
+                            children: []
+                        },
+                        {
+                            name: '小白',
+                            children: []
+                        },
+                    ]
+                },
+                {
+                    name: '财务部',
+                    children: []
+                },
+                {
+                    name: '销售部',
+                    children: [
+                        {
+                            name: '销售1',
+                            children: []
+                        },
+                        {
+                            name: '销售2',
+                            children: []
+                        },
+                    ]
+                },
+            ]
+        }
+    ]
+    let list2 = [
+        {
+            'id': '1',
+            'name': '111',
+            'pid': ''
+        },
+        {
+            'id': '1234',
+            'name': '112',
+            'pid': '1'
+        },
+        {
+            'id': '3',
+            'name': '113',
+            'pid': '1'
+        },
+        {
+            'id': '11',
+            'name': '101',
+            'pid': ''
+        },
+        {
+            'id': '22',
+            'name': '222',
+            'pid': ''
+        },
+        {
+            'id': '52',
+            'name': '0523',
+            'pid': '22'
+        },
+        {
+            'id': '1234',
+            'name': '112',
+            'pid': "22"
+        },
+        {
+            'id': '55',
+            'name': '555',
+            'pid': '3'
+        }
+    ]
+
+    function treeNode(list) {
+        var arr = []
+        list.forEach(obj => {
+            if (obj) {
+
+                arr.push(obj)
+                console.log(arr);
+                if (obj.children) {
+                    treeNode(obj.children)
+
+                }
+                // console.log(arr);
+            }
+        })
+        return arr
+    }
+
+    // let aa = treeNode(list)
+    // console.log(aa);
+
+    function tree(list, pid) {
+        var arr = []
+        list.forEach(obj => {
+            if (obj.pid === pid) {
+                const children = tree(list, obj.id)
+                if (children.length) {
+                    obj.children = children
+                }
+                arr.push(obj)
+            }
+        })
+        return arr
+    }
+
+    console.log(tree(list2, ''));
+    const abc = transListToTreeData(list2, '')
+    console.log(abc);
+</script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="./layui/css/layui.css">
+    <style>
+        .box {
+            width: 80%;
+            height: 100px;
+            /*background-color: pink;*/
+            margin: 0 auto;
+        }
+
+        .label {
+            display: inline-block;
+            width: 80px;
+            height: 30px;
+            /*background-color: yellow;*/
+            text-align: center;
+            line-height: 30px;
+            border: 1px solid #e6e6e6;
+            border-radius: 3px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<form class="layui-form" action="">
+    <div class="layui-form-item">
+
+    </div>
+
+</form>
+
+<script src="./layui/layui.js"></script>
+<script>
+    var obj = [
+        {
+            id: 1,
+            name: 'zs'
+        },
+        {
+            id: 2,
+            name: 'ls'
+        },
+        {
+            id: 3,
+            name: 'obj'
+        },
+        {
+            id: 4,
+            name: 'xb'
+        },
+        {
+            id: 5,
+            name: 'zs'
+        }
+    ]
+    var pl = document.querySelector("#pl")
+    for (var i = 0; i < obj.length; i++) {
+        pl.innerHTML += `<option value="${obj[i].id}" >${obj[i].name}</option>`
+    }
+</script>
+<script>
+
+    var box = document.querySelector('.box')
+    var form = layui.form
+    form.on('select(city)', function (data) {
+        let larber = box.querySelector(`#la-${data.value}`)
+        if (larber) {
+            alert("用户已存在")
+            return
+        }
+        obj.forEach(obj => {
+            // console.log(obj);
+            if (obj.id == data.value) {
+                box.innerHTML += `<span id="la-${obj.id}" class="label">${obj.name}<i class="layui-icon layui-icon-close" style="font-size: 14px; margin-left: 5px;cursor:pointer"></i></span>`
+            }
+        })
+        let span = document.querySelectorAll(".label")
+        for (let j = 0; j < span.length; j++) {
+            span[j].addEventListener('click', function () {
+                let now = this
+                now.parentNode.removeChild(now)
+            })
+        }
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            height: 400px;
+            background-color: pink;
+        }
+
+        .tab {
+            /*width: 100%;*/
+            height: 40px;
+        }
+
+        .tab li {
+            float: left;
+            list-style: none;
+            display: block;
+            padding: 10px;
+            /*background-color: pink;*/
+            border-bottom: 1px solid black;
+        }
+
+        .tab li i {
+            display: inline-block;
+            background: url("./删除2.svg") no-repeat;
+            width: 10px;
+            height: 10px;
+            background-size: cover;
+
+        }
+
+        .tab .active {
+            border: 1px solid black;
+            border-bottom: 0;
+        }
+
+        .contact {
+            /*float: left;*/
+            display: none;
+        }
+
+        .item {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <ul class="tab">
+        <li class="active">网站设置 <i index="0"></i></li>
+        <li>用户基本管理 <i index="1"></i></li>
+        <li>权限分配 <i index="2"></i></li>
+        <li>全部历史商品管理文字长一点试试 <i index="3"></i></li>
+        <li>订单管理 <i index="4"></i></li>
+    </ul>
+    <br>
+    <div class="contact item">1</div>
+    <div class="contact">2</div>
+    <div class="contact">3</div>
+    <div class="contact">4</div>
+    <div class="contact">5</div>
+</div>
+
+<script>
+    var list = document.querySelectorAll('.tab li')
+    let ab = 0
+    console.log(list);
+    list.forEach((li) => {
+        li.addEventListener('click', function (e) {
+            list = document.querySelectorAll('.tab li')
+            let contact = document.querySelectorAll('.contact')
+            for (var i = 0; i < list.length; i++) {
+                list[i].className = ''
+                contact[i].className = 'contact'
+            }
+            this.classList.add('active')
+            for (let j = 0; j < list.length; j++) {
+                if (this === list[j]) {
+                    contact[j].classList.add('item')
+                }
+            }
+        })
+    })
+    var del = document.querySelectorAll('i')
+    console.log(del);
+    del.forEach(i => {
+        i.addEventListener('click', btn, false)
+    })
+
+    //    删除事件
+    function btn(e) {
+        // console.log(e.target)
+        // 获取自定义属性index（索引值）
+        list = document.querySelectorAll('.tab li')
+        console.log(e.target.parentNode);
+        var parent = e.target.parentNode
+        var tab = document.querySelector('.tab')
+        let contact = document.querySelectorAll('.contact')
+        let box = document.querySelector('.box')
+        let index = 0
+        // 取出当前点击元素索引
+        for (let j = 0; j < list.length; j++) {
+            if (list[j] === parent) {
+                console.log(j)
+                index = j
+                break
+            }
+        }
+        // 控制删除之后添加一个默认的选项卡
+        if (parent.className && list.length > 1) {
+            for (var i = 0; i < list.length; i++) {
+                if (list[i] === parent && i != list.length) {
+                    list[i + 1].className = 'active'
+                    contact[i + 1].classList.add('item')
+                }
+            }
+        }
+        contact[index].parentNode.removeChild(contact[index])
+        tab.removeChild(parent)
+        e.stopPropagation()
+    }
+</script>
+</body>
+</html>

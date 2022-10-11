@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="layui-layer-move" id="layui-layer-move"></div>
+<div class="layui-layer layui-layer-page" id="layui-layer6" type="page" times="6" showtime="0" contype="string"
+     style="z-index: 19891020; width: 800px; height: 500px; position: fixed; top: 39.5px; left: 18px;">
+    <div class="layui-layer-title" style="cursor: move;">选择员工</div>
+    <div id="" class="layui-layer-content" style="height: 391px;">
+        <div style="width:220px; height:388px; border-right:1px solid #eee; overflow-x: hidden; overflow-y: auto; float:left;">
+            <div id="employeetree" style="padding:10px 0;">
+                <li class="d-click-checkbar dtree-nav-item" data-id="1" data-pid="0" dtree-id="employeetree"
+                    data-index="1">
+                    <div class="dtree-nav-div dtree-theme-item" data-id="1" dtree-id="employeetree"
+                         dtree-click="itemNodeClick" data-basic="" data-record="" d-contextmenu="false">
+                        <i class="dtreefont dtree-icon-jian dtree-theme-dtreefont dtree-theme-ficon" data-spread="open"
+                           data-id="1" dtree-id="employeetree"></i>
+                        <i class="dtreefont dtree-icon-wenjianjiazhankai dtreefont-special dtree-theme-dtreefont dtree-theme-icon"
+                           data-spread="open" data-id="1" dtree-id="employeetree"></i>
+                        <cite class="t-click" data-id="1" data-leaf="node">董事会</cite>
+                    </div>
+                    <ul class="dtree-nav-ul-sid dtree-nav-show" data-id="1" dtree-id="employeetree">
+                        <li class="d-click-checkbar dtree-nav-item" data-id="2" data-pid="1" dtree-id="employeetree"
+                            data-index="2">
+                            <div class="dtree-nav-div dtree-theme-item" data-id="2" dtree-id="employeetree"
+                                 dtree-click="itemNodeClick" data-basic="" data-record="" d-contextmenu="false">
+                                <i class="dtreefont dtree-icon-dian dtree-theme-dtreefont dtree-theme-ficon"
+                                   data-spread="last" data-id="2" dtree-id="employeetree"></i>
+                                <i class="dtreefont dtree-icon-fenzhijigou dtreefont-special dtree-theme-dtreefont dtree-theme-icon"
+                                   data-spread="last" data-id="2" dtree-id="employeetree"></i>
+                                <cite class="t-click" data-id="2" data-leaf="leaf">人事部</cite></div>
+                            <ul class="dtree-nav-ul-sid" data-id="2" dtree-id="employeetree"></ul>
+                        </li>
+                        <li class="d-click-checkbar dtree-nav-item" data-id="3" data-pid="1" dtree-id="employeetree"
+                            data-index="2">
+                            <div class="dtree-nav-div dtree-theme-item" data-id="3" dtree-id="employeetree"
+                                 dtree-click="itemNodeClick" data-basic="" data-record="" d-contextmenu="false">
+                                <i class="dtreefont dtree-icon-dian dtree-theme-dtreefont dtree-theme-ficon"
+                                   data-spread="last" data-id="3" dtree-id="employeetree"></i>
+                                <i class="dtreefont dtree-icon-fenzhijigou dtreefont-special dtree-theme-dtreefont dtree-theme-icon"
+                                   data-spread="last" data-id="3" dtree-id="employeetree"></i>
+                                <cite class="t-click" data-id="3" data-leaf="leaf">财务部</cite>
+                            </div>
+                            <ul class="dtree-nav-ul-sid" data-id="3" dtree-id="employeetree"></ul>
+                        </li>
+                        <li class="d-click-checkbar dtree-nav-item" data-id="4" data-pid="1" dtree-id="employeetree"
+                            data-index="2">
+                            <div class="dtree-nav-div dtree-theme-item" data-id="4" dtree-id="employeetree"
+                                 dtree-click="itemNodeClick" data-basic="" data-record="" d-contextmenu="false">
+                                <i class="dtreefont dtree-icon-dian dtree-theme-dtreefont dtree-theme-ficon"
+                                   data-spread="last" data-id="4" dtree-id="employeetree"></i>
+                                <i class="dtreefont dtree-icon-fenzhijigou dtreefont-special dtree-theme-dtreefont dtree-theme-icon"
+                                   data-spread="last" data-id="4" dtree-id="employeetree"></i>
+                                <cite class="t-click" data-id="4" data-leaf="leaf">市场部</cite>
+                            </div>
+                            <ul class="dtree-nav-ul-sid" data-id="4" dtree-id="employeetree"></ul>
+                        </li>
+                        <li class="d-click-checkbar dtree-nav-item" data-id="5" data-pid="1" dtree-id="employeetree"
+                            data-index="2">
+                            <div class="dtree-nav-div dtree-theme-item dtree-nav-this dtree-theme-item-this" data-id="5"
+                                 dtree-id="employeetree" dtree-click="itemNodeClick" data-basic="" data-record=""
+                                 d-contextmenu="false">
+                                <i class="dtreefont dtree-theme-dtreefont dtree-theme-ficon dtree-icon-jia"
+                                   data-spread="close" data-id="5" dtree-id="employeetree"></i>
+                                <i class="dtreefont dtreefont-special dtree-theme-dtreefont dtree-theme-icon dtree-icon-weibiaoti5"
+                                   data-spread="close" data-id="5" dtree-id="employeetree"></i>
+                                <cite class="t-click" data-id="5" data-leaf="node">销售部</cite>
+                            </div>
+                            <ul class="dtree-nav-ul-sid" data-id="5" dtree-id="employeetree">
+                                <li class="d-click-checkbar dtree-nav-item" data-id="8" data-pid="5"
+                                    dtree-id="employeetree" data-index="3">
+                                    <div class="dtree-nav-div dtree-theme-item" data-id="8" dtree-id="employeetree"
+                                         dtree-click="itemNodeClick" data-basic="" data-record="" d-contextmenu="false">
+                                        <i class="dtreefont dtree-icon-dian dtree-theme-dtreefont dtree-theme-ficon"
+                                           data-spread="last" data-id="8" dtree-id="employeetree"></i>
+                                        <i class="dtreefont dtree-icon-fenzhijigou dtreefont-special dtree-theme-dtreefont dtree-theme-icon"
+                                           data-spread="last" data-id="8" dtree-id="employeetree"></i>
+                                        <cite class="t-click" data-id="8" data-leaf="leaf">销售一部</cite>
+                                    </div>
+                                    <ul class="dtree-nav-ul-sid" data-id="8" dtree-id="employeetree"></ul>
+                                </li>
+                                <li class="d-click-checkbar dtree-nav-item" data-id="9" data-pid="5"
+                                    dtree-id="employeetree" data-index="3">
+                                    <div class="dtree-nav-div dtree-theme-item" data-id="9" dtree-id="employeetree"
+                                         dtree-click="itemNodeClick" data-basic="" data-record="" d-contextmenu="false">
+                                        <i class="dtreefont dtree-icon-dian dtree-theme-dtreefont dtree-theme-ficon"
+                                           data-spread="last" data-id="9" dtree-id="employeetree"></i>
+                                        <i class="dtreefont dtree-icon-fenzhijigou dtreefont-special dtree-theme-dtreefont dtree-theme-icon"
+                                           data-spread="last" data-id="9" dtree-id="employeetree"></i>
+                                        <cite class="t-click" data-id="9" data-leaf="leaf">销售二部</cite>
+                                    </div>
+                                    <ul class="dtree-nav-ul-sid" data-id="9" dtree-id="employeetree"></ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </div>
+        </div>
+        <div style="width:568px; height:388px; user-select:none; overflow-x: hidden; overflow-y: auto; float:left;">
+            <div style="padding:15px 10px 0;">
+                <div style="color:#999; text-align:center;">⇐ 点击左边部门筛选员工，或者点击下面字母筛选</div>
+                <div id="letterBtn" style="color:#999; text-align:center;">
+                    <span class="layui-letter-span" data-code="a">A</span>
+                    <span class="layui-letter-span" data-code="b">B</span>
+                    <span class="layui-letter-span" data-code="c">C</span>
+                    <span class="layui-letter-span" data-code="d">D</span>
+                    <span class="layui-letter-span" data-code="e">E</span>
+                    <span class="layui-letter-span" data-code="f">F</span>
+                    <span class="layui-letter-span" data-code="g">G</span>
+                    <span class="layui-letter-span" data-code="h">H</span>
+                    <span class="layui-letter-span" data-code="i">I</span>
+                    <span class="layui-letter-span" data-code="j">J</span>
+                    <span class="layui-letter-span" data-code="k">K</span>
+                    <span class="layui-letter-span" data-code="l">L</span>
+                    <span class="layui-letter-span" data-code="m">M</span>
+                    <span class="layui-letter-span" data-code="n">N</span>
+                    <span class="layui-letter-span" data-code="o">O</span>
+                    <span class="layui-letter-span" data-code="p">P</span>
+                    <span class="layui-letter-span" data-code="q">Q</span>
+                    <span class="layui-letter-span" data-code="r">R</span>
+                    <span class="layui-letter-span" data-code="s">S</span>
+                    <span class="layui-letter-span" data-code="t">T</span>
+                    <span class="layui-letter-span" data-code="u">U</span>
+                    <span class="layui-letter-span" data-code="v">V</span>
+                    <span class="layui-letter-span" data-code="w">W</span>
+                    <span class="layui-letter-span" data-code="x">X</span>
+                    <span class="layui-letter-span" data-code="y">Y</span>
+                    <span class="layui-letter-span" data-code="z">Z</span>
+                </div>
+            </div>
+            <div id="employee" style="padding:8px 15px">
+                <span class="layui-tags-span" data-id="8" data-did="5" data-department="销售部">谈无欲</span>
+                <span class="layui-tags-span" data-id="23" data-did="8" data-department="销售一部">佛剑分说</span>
+                <span class="layui-tags-span" data-id="24" data-did="9" data-department="销售二部">剑子仙迹</span>
+                <span class="layui-tags-span" data-id="25" data-did="10" data-department="销售三部">疏楼龙宿</span>
+                <span class="layui-tags-span" data-id="26" data-did="8" data-department="销售一部">风僧白云剑</span>
+                <span class="layui-tags-span" data-id="27" data-did="8" data-department="销售一部">问菩提</span>
+                <span class="layui-tags-span" data-id="28" data-did="8" data-department="销售一部">剑默言</span>
+                <span class="layui-tags-span" data-id="29" data-did="8" data-department="销售一部">少阳君</span>
+                <span class="layui-tags-span" data-id="30" data-did="8" data-department="销售一部">言倾城</span>
+                <span class="layui-tags-span" data-id="31" data-did="9" data-department="销售二部">欲娇娘</span>
+                <span class="layui-tags-span" data-id="32" data-did="9" data-department="销售二部">傲笑红尘</span>
+                <span class="layui-tags-span" data-id="34" data-did="9" data-department="销售二部">笑封君</span>
+                <span class="layui-tags-span" data-id="35" data-did="9" data-department="销售二部">柳峰翠</span>
+                <span class="layui-tags-span" data-id="36" data-did="9" data-department="销售二部">慕潇韩</span>
+                <span class="layui-tags-span" data-id="37" data-did="9" data-department="销售二部">剑非道</span>
+                <span class="layui-tags-span" data-id="38" data-did="9" data-department="销售二部">收万劫</span>
+                <span class="layui-tags-span" data-id="40" data-did="9" data-department="销售二部">青阳子</span>
+                <span class="layui-tags-span" data-id="41" data-did="10" data-department="销售三部">穆仙凤</span>
+                <span class="layui-tags-span" data-id="42" data-did="10" data-department="销售三部">默言歆</span>
+                <span class="layui-tags-span" data-id="43" data-did="10" data-department="销售三部">应无忧</span>
+                <span class="layui-tags-span" data-id="45" data-did="10" data-department="销售三部">玉离经</span>
+                <span class="layui-tags-span" data-id="46" data-did="10" data-department="销售三部">映霜清</span>
+                <span class="layui-tags-span" data-id="47" data-did="10" data-department="销售三部">侠儒无踪</span>
+                <span class="layui-tags-span" data-id="48" data-did="10" data-department="销售三部">花伴月</span>
+                <span class="layui-tags-span" data-id="49" data-did="10" data-department="销售三部">雁穿云</span>
+                <span class="layui-tags-span" data-id="50" data-did="10" data-department="销售三部">鱼游水</span>
+                <span class="layui-tags-span" data-id="89" data-did="9" data-department="销售二部">一页书</span>
+                <span class="layui-tags-span" data-id="91" data-did="5" data-department="销售部">纪无忧</span>
+                <span class="layui-tags-span" data-id="95" data-did="8" data-department="销售一部">张三三</span>
+                <span class="layui-tags-span" data-id="97" data-did="8" data-department="销售一部">刘德华</span>
+                <span class="layui-tags-span" data-id="100" data-did="10" data-department="销售三部">一直</span>
+                <span class="layui-tags-span" data-id="105" data-did="5" data-department="销售部">刘小姐</span>
+                <span class="layui-tags-span" data-id="106" data-did="5" data-department="销售部">刘小美</span>
+            </div>
+            <div style="padding:10px 15px; border-top:1px solid #eee;;">
+                <strong>已选择</strong>
+                <span class="layui-tags-all" style="display: inline;">全选</span>
+            </div>
+            <div id="selectTags" style="padding:10px 15px;"></div>
+        </div>
+        <span class="layui-layer-setwin">
+            <a class="layui-layer-ico layui-layer-close layui-layer-close1" href="javascript:;"></a>
+        </span>
+        <div class="layui-layer-btn layui-layer-btn-c">
+            <a class="layui-layer-btn0">确定添加</a>
+            <a class="layui-layer-btn1">取消关闭</a>
+        </div>
+        <span class="layui-layer-resize"></span>
+    </div>
+</div>
+</body>
+</html>

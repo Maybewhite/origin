@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="renderer" content="webkit"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="mobile-prefetch" href=""/>
+
+
+    <title>勾股OA</title>
+
+
+    <!--    <link rel="stylesheet" href="layui/css/layui.css">-->
+    <link rel="stylesheet" href="css/gougu.css" media="all">
+
+    <style>
+        .layui-form-pane .layui-form-label {
+            color: #999;
+            width: 80px;
+            padding: 8px 3px;
+        }
+
+        .layui-form-item .layui-inline {
+            margin-right: 3px;
+            margin-bottom: 10px;
+        }
+
+        .layui-form-item {
+            margin-bottom: 5px;
+        }
+
+        .layui-form-item .layui-btn-danger {
+            display: none;
+            margin-top: -8px
+        }
+
+        .layui-form-item:hover .layui-btn-danger {
+            display: inline-block;
+        }
+
+        .select-1, .select-2 {
+            display: none;
+        }
+
+        .label, .label2 {
+            display: inline-block;
+            width: 80px;
+            height: 30px;
+            /*background-color: yellow;*/
+            text-align: center;
+            line-height: 30px;
+            border: 1px solid #e6e6e6;
+            border-radius: 3px;
+            margin-left: 10px;
+            margin-top: 10px;
+        }
+
+        .box, .box2 {
+            /*width: 100%;*/
+            height: 100px;
+            margin: 10px auto;
+            overflow: scroll;
+        }
+    </style>
+
+
+</head>
+<body class="main-body">
+<!-- 主体 -->
+
+<form class="layui-form p-4">
+    <h3 class="pb-3">审批流程</h3>
+    <table class="layui-table">
+        <tr>
+            <td class="layui-td-gray">流程名称<font>*</font></td>
+            <td>
+                <input type="text" name="name" autocomplete="off" placeholder="请输入审批流程名称" lay-verify="required"
+                       lay-reqText="请输入审批流程名称" class="layui-input">
+            </td>
+            <td class="layui-td-gray">应用模块<font>*</font></td>
+            <td>
+                <select name="type" lay-filter="type" lay-verify="required" lay-reqText="请选择应用模块">
+                    <option value="">--请选择--</option>
+                    <option value="1">假勤</option>
+                    <option value="2">行政</option>
+                    <option value="3">财务</option>
+                    <option value="4">人事</option>
+                    <option value="5">其他</option>
+                    <option value="6">报销</option>
+                    <option value="7">发票</option>
+                    <option value="8">合同</option>
+                </select>
+            </td>
+            <td class="layui-td-gray">审批类型<font>*</font></td>
+            <td>
+                <select name="flow_cate" lay-filter="flowcate" lay-verify="required" lay-reqText="请选择审批类型">
+                    <option value="">--请先选择应用模块--</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td class="layui-td-gray">应用部门</td>
+            <td colspan="5">
+                <select id="department_ids" name="department_ids" xm-selected="" xm-select="select1"
+                        xm-select-skin="default"></select>
+                <p style="padding:6px 0 0; font-size:12px; color:#999">不选，默认是全公司</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="layui-td-gray">流程说明</td>
+            <td colspan="5">
+                <textarea name="remark" placeholder="请输入流程说明" class="layui-textarea"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td class="layui-td-gray-2">审批流类型<font>*</font></td>
+            <td colspan="5">
+                <input type="radio" name="check_type" lay-filter="checktype" value="1" title="固定审批流" checked>
+                <input type="radio" name="check_type" lay-filter="checktype" value="2" title="自由审批流">
+                <input type="radio" name="check_type" lay-filter="checktype" value="3" title="可回退的审批流">
+            </td>
+        </tr>
+        <tr id="flowTr1">
+            <td class="layui-td-gray">审批流程<font>*</font></td>
+            <td colspan="5">
+                <div id="flowList1">
+                    <div class="layui-form-item layui-form-pane">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">第1级</label>
+                            <div class="layui-input-inline">
+                                <select name="flowType[]" lay-filter="flowtype">
+                                    <option value="1">当前部门负责人</option>
+                                    <option value="2">上一级部门负责人</option>
+                                    <option value="3">指定人员(多人或签)</option>
+                                    <option value="4">指定人员(多人会签)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="layui-inline select-1">
+                            <label class="layui-form-label">指定人员</label>
+                            <div class="layui-input-inline" style="width:360px;">
+                                <select name="city" lay-filter="city" lay-verify="" lay-search id="pl">
+
+                                </select>
+                                <!--                                <input type="text" name="flowUnamesA[]" value="" autocomplete="off"  class="layui-input picker-more">-->
+                                <!--                                <input type="hidden" name="flowUidsA[]" value="">-->
+                            </div>
+                        </div>
+                        <div class="layui-line">
+
+                            <div class="box layui-input">
+                                <!--        <span class="label">张三 <i class="layui-icon layui-icon-close" style="font-size: 14px; margin-left: 5px;cursor:pointer"></i></span>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <span id="addFlow1" class="layui-btn layui-btn-xs layui-btn-normal">+ 添加审批层级</span>
+                <div style="padding:10px; margin-top:10px; font-size:12px; background-color:#fffcf0">
+                    <p><strong>温馨提示</strong></p>
+                    <p>1、当选择<strong> “当前部门负责人” </strong>审批时。系统仅会通知当前部门的负责人。</p>
+                    <p>2、当选择<strong> “上一级部门负责人” </strong>审批时。系统仅会通知当前部门的上一级部门的负责人。</p>
+                    <p>3、当选择<strong> “指定人员(多人或签)” </strong>时，表示指定用户中任意一人审批即可，可单选或多选。</p>
+                    <p>4、当选择<strong> “指定人员(多人会签)” </strong>时，表示指定人员中所有人都需要审批，可单选或多选。</p>
+                    <p>5、如果指定用户没有分配查看审批模块的功能权限，系统会通知其审批，但是他无法查看此审批数据信息。</p>
+                </div>
+            </td>
+        </tr>
+        <tr id="flowTr2" style="display:none">
+            <td class="layui-td-gray">审批流程</td>
+            <td colspan="5">
+                <div style="padding:10px; font-size:12px; background-color:#fffcf0">
+                    <p><strong>温馨提示</strong></p>
+                    <p>无需配置审批人，审批时，根据实际情况选择审批人即可，自由度最高。</p>
+                </div>
+            </td>
+        </tr>
+        <tr id="flowTr3" style="display:none;">
+            <td class="layui-td-gray">审批流程<font>*</font></td>
+            <td colspan="5">
+                <div id="flowList3">
+                    <div class="layui-form-item layui-form-pane">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">第1级</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="flowName[]" value="" autocomplete="off" placeholder="请输入流程名称"
+                                       class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline select-3">
+                            <label class="layui-form-label">指定人员</label>
+                            <div class="layui-input-inline" style="width:360px;">
+                                <!--                                <input type="text" name="flowUnamesB[]" value="" autocomplete="off" readonly class="layui-input picker-one">-->
+                                <!--                                <input type="hidden" name="flowUidsB[]" value="">-->
+                                <select name="city2" lay-filter="city2" lay-verify="" lay-search id="pl2">
+
+                                </select>
+                            </div>
+
+
+                        </div>
+                        <div class="layui-inline select-3">
+                            <div class="box2 layui-input" style="width: 1200px">
+                                <!--        <span class="label">张三 <i class="layui-icon layui-icon-close" style="font-size: 14px; margin-left: 5px;cursor:pointer"></i></span>-->
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <span id="addFlow3" class="layui-btn layui-btn-xs layui-btn-normal">+ 添加审批层级</span>
+                <div style="padding:10px; margin-top:10px; font-size:12px; background-color:#fffcf0">
+                    <p><strong>温馨提示</strong></p>
+                    <p>1、<strong>指定人员</strong>单选。后期审批的时候，审批人只能该指定人员。</p>
+                    <p>2、该审批流程可<strong>回退</strong>，当拒绝审核时，会自动回退到上一位审批人节点。</p>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td class="layui-td-gray">抄送人</td>
+            <td colspan="5">
+                <input type="text" name="copy_unames[]" value="" autocomplete="off" readonly
+                       class="layui-input picker-more">
+                <input type="hidden" name="copy_uids[]" value="">
+            </td>
+        </tr>
+    </table>
+    <div class="py-3">
+        <input type="hidden" name="id" value="0">
+        <button class="layui-btn layui-btn-normal" lay-submit="" lay-filter="webform">立即提交</button>
+        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+    </div>
+</form>
+
+<!-- /主体 -->
+
+<!-- 底部 -->
+
+<!-- /底部 -->
+
+<!-- 脚本 -->
+
+<script src="js/jquery-3.6.0.min.js"></script>
+<script src="./layui/layui.js"></script>
+<script src="test.js"></script>
+
+<script>
+    var obj = [
+        {
+            id: 1,
+            name: 'zs'
+        },
+        {
+            id: 2,
+            name: 'ls'
+        },
+        {
+            id: 3,
+            name: 'obj'
+        },
+        {
+            id: 4,
+            name: 'xb'
+        },
+        {
+            id: 5,
+            name: 'zs'
+        }
+    ]
+    var obj2 = [
+        {
+            id: 11,
+            name: '张三'
+        },
+        {
+            id: 21,
+            name: '李四'
+        },
+        {
+            id: 33,
+            name: 'obj'
+        },
+        {
+            id: 4,
+            name: '王五'
+        },
+        {
+            id: 5,
+            name: '贺六'
+        }
+    ]
+    var pl = document.querySelector("#pl")
+    var pl2 = document.querySelector("#pl2")
+    for (var i = 0; i < obj.length; i++) {
+        pl.innerHTML += `<option value="${obj[i].id}" >${obj[i].name}</option>`
+    }
+    for (i = 0; i < obj.length; i++) {
+        pl2.innerHTML += `<option value="${obj2[i].id}" >${obj2[i].name}</option>`
+    }
+
+</script>
+<script>
+
+    var box = document.querySelector('.box')
+    var box2 = document.querySelector('.box2')
+
+    var form = layui.form
+    form.on('select(city)', function (data) {
+        let larber = box.querySelector(`#la-${data.value}`)
+        if (larber) {
+            alert("用户已存在")
+            return
+        }
+        obj.forEach(obj => {
+            // console.log(obj);
+            if (obj.id == data.value) {
+                box.innerHTML += `<span id="la-${obj.id}" class="label">${obj.name}<i class="layui-icon layui-icon-close" style="font-size: 14px; margin-left: 5px;cursor:pointer"></i></span>`
+            }
+        })
+        let span = document.querySelectorAll(".label")
+        for (let j = 0; j < span.length; j++) {
+            span[j].addEventListener('click', function () {
+                let now = this
+                now.parentNode.removeChild(now)
+            })
+        }
+    });
+
+    form.on('select(city2)', function (data) {
+        // console.log(1)
+        let larber2 = box2.querySelector(`#la2-${data.value}`)
+        console.log(`#la2-${data.value}`)
+        console.log(larber2);
+        if (larber2) {
+            alert("用户已存在")
+            return
+        }
+        obj2.forEach(obj => {
+            // console.log(obj);
+            if (obj.id == data.value) {
+                box2.innerHTML += `<span id="la2-${obj.id}" class="label2">${obj.name}<i class="layui-icon layui-icon-close" style="font-size: 14px; margin-left: 5px;cursor:pointer"></i></span>`
+            }
+        })
+        let span = document.querySelectorAll(".label2")
+        for (let j = 0; j < span.length; j++) {
+            span[j].addEventListener('click', function () {
+                let now = this
+                now.parentNode.removeChild(now)
+            })
+        }
+    });
+</script>
+
+<!-- /脚本 -->
+
+<!--<script src="gouguInit.js"></script>-->
+<!-- 统计代码 -->
+
+<!-- /统计代码 -->
+
+
+</body>
+</html>
+
+
+
+

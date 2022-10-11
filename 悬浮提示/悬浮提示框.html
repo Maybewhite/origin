@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            /*background-color: #ccc;*/
+        }
+
+        .box {
+            width: 60px;
+            /*height: 100px;*/
+            /*!*background-color: pink;*!*/
+            /*display: flex;*/
+            /*justify-content: space-between;*/
+            /*position: relative;*/
+        }
+
+        .box button {
+            height: 30px;
+        }
+
+        .w-box {
+            width: 100px;
+            min-height: 100px;
+            max-height: 500px;
+            /*background-color: skyblue;*/
+            position: absolute;
+            top: 25px;
+            opacity: 0;
+            transition: 0.5s all;
+
+        }
+
+        .w-box .triangle {
+            position: absolute;
+            left: 20%;
+            top: 0;
+            width: 0;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid black;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+        }
+
+        .w-box .win {
+            width: 100px;
+            height: calc(100% - 10px);
+            /*height: 40px;*/
+            background-color: white;
+            position: absolute;
+            bottom: 0;
+            border-radius: 5px;
+            box-shadow: 2px 2px 12px rgba(0, 0, 0, .5);
+            text-align: center;
+            line-height: 40px;
+            overflow-y: scroll;
+            /*opacity: 0;*/
+        }
+
+        ::-webkit-scrollbar {
+            width: 0;
+        }
+
+        .abc {
+            width: 0;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid black;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            /*box-shadow: 1px 1px 12px rgba(0,0,0,.4);*/
+        }
+
+        .btn:hover {
+
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <button class="btn">按钮1</button>
+    <div class="w-box">
+        <!--        三角形-->
+        <div class="triangle"></div>
+        <div class="win"> 提示文字 提示文字提示文字提示文字提示文字</div>
+    </div>
+
+</div>
+<!--<div class="abc"></div>-->
+
+<script>
+    var btn = document.querySelectorAll('.btn')
+    var box = document.querySelector('.w-box')
+    var b = document.querySelector('.box')
+    btn[0].addEventListener('mouseenter', () => {
+        box.style.opacity = 1
+    })
+
+    b.addEventListener('mouseleave', () => {
+        box.style.opacity = 0
+    })
+</script>
+</body>
+</html>
